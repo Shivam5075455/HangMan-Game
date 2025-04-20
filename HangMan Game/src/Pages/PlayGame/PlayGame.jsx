@@ -42,21 +42,27 @@ function PlayGame() {
 
     return (
         <div>
-            <h1>Play Game</h1>
+            <h1 className="text-center my-3 text-3xl">Play HangMan Game</h1>
             {gameWon ? (
                 <>
                     <div className="text-green-500 text-2xl font-bold">Congratulations! You guessed the word:
-                        <span className="text-green-600">{wordSelected}</span></div>
+                        <span className="text-green-600">{" "+wordSelected}</span></div>
                 </>
             ) : gameOver ? (
                 <div className="text-red-500 text-2xl font-bold">Game Over! The word was:
-                    <span className="text-red-300">{wordSelected}</span></div>
+                    <span className="text-red-700">{" "+wordSelected}</span></div>
             ) : (
                 <>
                     <MaskedText text={wordSelected} usedLetters={usedLetters} />
                     <hr />
-                    <LetterButton text={wordSelected} usedLetters={usedLetters} onLetterClick={handleLetterClick} />
-                    <HangMan step={step} />
+                    <div className="flex justify-between items-center">
+                        <div className="basis-2/4">
+                            <LetterButton text={wordSelected} usedLetters={usedLetters} onLetterClick={handleLetterClick} />
+                        </div>
+                        <div className="basis-2/4 flex justify-end items-center">
+                            <HangMan step={step} />
+                        </div>
+                    </div>
                 </>
             )}
             <hr />
